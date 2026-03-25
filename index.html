@@ -425,6 +425,194 @@
       opacity:0.2;
     }
 
+    /* ── Password gate ── */
+    .pw-gate {
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      background:#F7F5F2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      transition:opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .pw-gate.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+    .pw-gate-inner { text-align:center; max-width:360px; padding:0 32px; }
+    .pw-gate-inner h1 {
+      font-family:'Playfair Display', Georgia, serif;
+      font-size:2.4rem;
+      font-weight:700;
+      color:#1B2E4A;
+      margin-bottom:8px;
+    }
+    .pw-gate-inner p {
+      font-size:0.85rem;
+      color:#9a9590;
+      margin-bottom:32px;
+      letter-spacing:0.02em;
+    }
+    .pw-input-wrap { position:relative; }
+    .pw-input-wrap input {
+      width:100%;
+      padding:16px 20px;
+      border:1px solid rgba(27,46,74,0.15);
+      border-radius:4px;
+      font-family:'Inter', sans-serif;
+      font-size:0.95rem;
+      color:#1B2E4A;
+      background:#FFFFFF;
+      outline:none;
+      text-align:center;
+      letter-spacing:0.1em;
+      transition:border-color 0.2s;
+    }
+    .pw-input-wrap input:focus { border-color:#B8926A; }
+    .pw-input-wrap input::placeholder { color:#c5c0ba; letter-spacing:0.05em; }
+    .pw-error {
+      font-size:0.75rem;
+      color:#a0604a;
+      margin-top:12px;
+      opacity:0;
+      transition:opacity 0.2s;
+    }
+    .pw-error.visible { opacity:1; }
+
+    /* ── Design System ── */
+    .ds-color-grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:16px;
+      margin:32px 0;
+    }
+    .ds-swatch {
+      border-radius:6px;
+      overflow:hidden;
+      border:1px solid rgba(27,46,74,0.08);
+    }
+    .ds-swatch-color {
+      height:80px;
+      display:flex;
+      align-items:flex-end;
+      padding:10px 14px;
+    }
+    .ds-swatch-hex {
+      font-size:0.65rem;
+      font-weight:600;
+      letter-spacing:0.06em;
+      font-family:'Inter', monospace;
+    }
+    .ds-swatch-info {
+      padding:14px 14px;
+      background:#FFFFFF;
+    }
+    .ds-swatch-name {
+      font-size:0.75rem;
+      font-weight:600;
+      color:#1B2E4A;
+      margin-bottom:2px;
+    }
+    .ds-swatch-role {
+      font-size:0.68rem;
+      color:#9a9590;
+    }
+    .ds-type-scale {
+      margin:32px 0;
+    }
+    .ds-type-row {
+      display:flex;
+      align-items:baseline;
+      gap:24px;
+      padding:20px 0;
+      border-bottom:1px solid rgba(27,46,74,0.06);
+    }
+    .ds-type-meta {
+      flex:0 0 140px;
+      text-align:right;
+    }
+    .ds-type-size {
+      font-size:0.65rem;
+      font-weight:600;
+      color:#B8926A;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+    .ds-type-weight {
+      font-size:0.62rem;
+      color:#9a9590;
+    }
+    .ds-type-sample {
+      flex:1;
+      color:#1B2E4A;
+    }
+    .ds-spacing-row {
+      display:flex;
+      align-items:center;
+      gap:20px;
+      padding:12px 0;
+    }
+    .ds-spacing-label {
+      flex:0 0 80px;
+      font-size:0.7rem;
+      font-weight:600;
+      color:#B8926A;
+      letter-spacing:0.06em;
+      text-align:right;
+    }
+    .ds-spacing-bar {
+      height:8px;
+      background:#1B2E4A;
+      border-radius:2px;
+      opacity:0.12;
+    }
+    .ds-spacing-val {
+      font-size:0.68rem;
+      color:#9a9590;
+      font-family:'Inter', monospace;
+    }
+    .ds-component-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin:32px 0;
+    }
+    .ds-component-card {
+      background:#FFFFFF;
+      border:1px solid rgba(27,46,74,0.08);
+      border-radius:6px;
+      padding:32px;
+    }
+    .ds-component-card h3 {
+      font-size:1rem;
+      margin-bottom:16px;
+    }
+    .ds-component-sample {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .ds-radius-grid {
+      display:flex;
+      gap:20px;
+      align-items:flex-end;
+      margin:24px 0;
+    }
+    .ds-radius-item {
+      text-align:center;
+    }
+    .ds-radius-box {
+      width:56px;
+      height:56px;
+      background:#1B2E4A;
+      opacity:0.08;
+      margin:0 auto 8px;
+    }
+    .ds-radius-label {
+      font-size:0.62rem;
+      color:#9a9590;
+      font-family:'Inter', monospace;
+    }
+
     /* ── Responsive ── */
     @media (max-width:768px) {
       .hero h1 { font-size:2.4rem; }
@@ -437,16 +625,55 @@
       .image-break img { height:240px; }
       .extras-block { padding:40px 28px; }
       .extras-grid { grid-template-columns:1fr; }
+      .ds-color-grid { grid-template-columns:repeat(3,1fr); }
+      .ds-component-grid { grid-template-columns:1fr; }
     }
 
     @media (max-width:480px) {
       .hero h1 { font-size:1.9rem; }
       .kpi-grid { grid-template-columns:1fr; }
       section { padding:56px 0; }
+      .ds-color-grid { grid-template-columns:repeat(2,1fr); }
+      .ds-type-row { flex-direction:column; gap:4px; }
+      .ds-type-meta { text-align:left; flex:none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ════════════════ PASSWORD GATE ════════════════ -->
+  <div class="pw-gate" id="pwGate">
+    <div class="pw-gate-inner">
+      <h1>Consortium</h1>
+      <p>This is a confidential preview. Enter the password to continue.</p>
+      <div class="pw-input-wrap">
+        <input type="password" id="pwInput" placeholder="Password" autocomplete="off" autofocus>
+        <div class="pw-error" id="pwError">Incorrect password</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var gate=document.getElementById('pwGate'),
+          inp=document.getElementById('pwInput'),
+          err=document.getElementById('pwError');
+      if(sessionStorage.getItem('pw-ok')==='1'){gate.classList.add('hidden');return;}
+      document.body.style.overflow='hidden';
+      inp.addEventListener('keydown',function(e){
+        if(e.key==='Enter'){
+          if(inp.value.toLowerCase().trim()==='sara'){
+            sessionStorage.setItem('pw-ok','1');
+            gate.classList.add('hidden');
+            document.body.style.overflow='';
+          } else {
+            err.classList.add('visible');
+            inp.value='';
+            setTimeout(function(){err.classList.remove('visible');},2000);
+          }
+        }
+      });
+    })();
+  </script>
 
   <!-- ════════════════ HERO ════════════════ -->
   <div class="hero">
@@ -684,6 +911,244 @@
 
       <div class="narrative" style="margin-top:16px;">
         <p>Trust signals are engineered into every touchpoint: prominent credentialing (CFP, CIM, insurance licenses), named team photos with responsibility areas, a transparent three-step onboarding process, privacy-aware language, and same-business-day response commitments.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ════════════════ DESIGN SYSTEM ════════════════ -->
+  <div class="container">
+    <section>
+      <div class="section-label">Design System</div>
+      <h2>The visual language we'll build from</h2>
+      <div class="narrative">
+        <p>Every element of Consortium's digital presence derives from a cohesive design system — a shared vocabulary of colour, type, spacing, and component patterns that ensures consistency across every page, device, and touchpoint. This is the foundation.</p>
+      </div>
+
+      <!-- Colour palette -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Colour Palette</div>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#1B2E4A;">
+            <span class="ds-swatch-hex" style="color:rgba(255,255,255,0.6);">#1B2E4A</span>
+          </div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Deep Navy</div>
+            <div class="ds-swatch-role">Primary &middot; Headings &middot; Buttons</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#B8926A;">
+            <span class="ds-swatch-hex" style="color:rgba(255,255,255,0.7);">#B8926A</span>
+          </div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Warm Bronze</div>
+            <div class="ds-swatch-role">Accent &middot; Labels &middot; Dividers</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#F7F5F2;">
+            <span class="ds-swatch-hex" style="color:rgba(27,46,74,0.4);">#F7F5F2</span>
+          </div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Warm Linen</div>
+            <div class="ds-swatch-role">Background &middot; Page canvas</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#3a3d45;">
+            <span class="ds-swatch-hex" style="color:rgba(255,255,255,0.5);">#3a3d45</span>
+          </div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Charcoal</div>
+            <div class="ds-swatch-role">Body text &middot; Narrative copy</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#FFFFFF; border-bottom:1px solid rgba(27,46,74,0.06);">
+            <span class="ds-swatch-hex" style="color:rgba(27,46,74,0.3);">#FFFFFF</span>
+          </div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">White</div>
+            <div class="ds-swatch-role">Surface &middot; Cards &middot; Inputs</div>
+          </div>
+        </div>
+      </div>
+      <div class="narrative">
+        <p>The palette is deliberately restrained — <strong>deep navy</strong> carries authority and trust, <strong>warm bronze</strong> adds editorial warmth without opulence, and <strong>warm linen</strong> creates breathing room. No bright colours compete for attention. The palette whispers rather than shouts, which is exactly how private wealth should feel online.</p>
+      </div>
+
+      <!-- Typography -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Typography</div>
+      <div class="narrative" style="margin-bottom:8px;">
+        <p><strong>Playfair Display</strong> for display and headings — a transitional serif with high contrast and fine hairlines that evokes editorial authority. Paired with <strong>Inter</strong> for body text — a clean, humanist sans-serif optimized for screen readability at small sizes.</p>
+      </div>
+      <div class="ds-type-scale">
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Display</div>
+            <div class="ds-type-weight">Playfair 700 &middot; 3.8rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-family:'Playfair Display',serif; font-size:3rem; font-weight:700; line-height:1.1;">Consortium</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Heading 2</div>
+            <div class="ds-type-weight">Playfair 700 &middot; 2.2rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; line-height:1.2;">Trust at first glance</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Heading 3</div>
+            <div class="ds-type-weight">Playfair 700 &middot; 1.4rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; line-height:1.3;">Private Wealth Advisory</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Body</div>
+            <div class="ds-type-weight">Inter 400 &middot; 1.02rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-size:1.02rem; color:#3a3d45; line-height:1.9;">The website will communicate confidence, discretion, and precision through every typographic choice — from generous line heights to careful letter-spacing in labels.</div>
+        </div>
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Label</div>
+            <div class="ds-type-weight">Inter 600 &middot; 0.65rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-size:0.65rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B8926A;">Section Label</div>
+        </div>
+        <div class="ds-type-row" style="border-bottom:none;">
+          <div class="ds-type-meta">
+            <div class="ds-type-size">Caption</div>
+            <div class="ds-type-weight">Inter 400 &middot; 0.68rem</div>
+          </div>
+          <div class="ds-type-sample" style="font-size:0.68rem; color:#9a9590; letter-spacing:0.02em;">Fine print and footer text</div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Spacing System</div>
+      <div class="narrative" style="margin-bottom:24px;">
+        <p>An 8px base grid creates consistent vertical rhythm. Generous section padding (80px) and container widths (860px narrative, 1100px wide) give every element room to breathe — unhurried design signals care.</p>
+      </div>
+      <div style="margin:24px 0;">
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">xs</div>
+          <div class="ds-spacing-bar" style="width:8px;"></div>
+          <div class="ds-spacing-val">8px</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">sm</div>
+          <div class="ds-spacing-bar" style="width:16px;"></div>
+          <div class="ds-spacing-val">16px</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">md</div>
+          <div class="ds-spacing-bar" style="width:24px;"></div>
+          <div class="ds-spacing-val">24px</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">lg</div>
+          <div class="ds-spacing-bar" style="width:32px;"></div>
+          <div class="ds-spacing-val">32px</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">xl</div>
+          <div class="ds-spacing-bar" style="width:56px;"></div>
+          <div class="ds-spacing-val">56px</div>
+        </div>
+        <div class="ds-spacing-row">
+          <div class="ds-spacing-label">section</div>
+          <div class="ds-spacing-bar" style="width:80px;"></div>
+          <div class="ds-spacing-val">80px</div>
+        </div>
+      </div>
+
+      <!-- Radii -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Corner Radii</div>
+      <div class="narrative" style="margin-bottom:8px;">
+        <p>Minimal rounding reinforces the editorial tone — soft enough to feel approachable, sharp enough to feel precise.</p>
+      </div>
+      <div class="ds-radius-grid">
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:0;"></div>
+          <div class="ds-radius-label">0px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:4px;"></div>
+          <div class="ds-radius-label">4px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:6px;"></div>
+          <div class="ds-radius-label">6px</div>
+        </div>
+        <div class="ds-radius-item">
+          <div class="ds-radius-box" style="border-radius:50%;"></div>
+          <div class="ds-radius-label">50%</div>
+        </div>
+      </div>
+
+      <!-- Components -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Component Patterns</div>
+      <div class="ds-component-grid">
+        <div class="ds-component-card">
+          <h3>Buttons</h3>
+          <div class="ds-component-sample">
+            <a class="cta-button" href="#" onclick="return false;" style="text-align:center;">Primary Action</a>
+            <a class="cta-button" href="#" onclick="return false;" style="text-align:center; background:transparent; color:#1B2E4A; border:1px solid rgba(27,46,74,0.2);">Secondary Action</a>
+          </div>
+        </div>
+        <div class="ds-component-card">
+          <h3>Labels &amp; Tags</h3>
+          <div class="ds-component-sample">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <div class="cluster-tag">Winnipeg Tax Planning</div>
+              <div class="cluster-tag">M&amp;A Advisory</div>
+            </div>
+            <div>
+              <div class="section-label" style="margin-bottom:0;">Section Label Style</div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-component-card">
+          <h3>Cards</h3>
+          <div class="ds-component-sample">
+            <div style="background:#F7F5F2; border:1px solid rgba(27,46,74,0.08); border-radius:6px; padding:20px;">
+              <div style="font-size:0.65rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#B8926A; margin-bottom:8px;">KPI Label</div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#1B2E4A;">2.5&ndash;4.0%</div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-component-card">
+          <h3>Dividers</h3>
+          <div class="ds-component-sample" style="gap:20px;">
+            <div style="width:48px; height:2px; background:#B8926A;"></div>
+            <div style="width:100%; height:1px; background:rgba(27,46,74,0.08);"></div>
+            <div style="width:100%; height:6px; background:linear-gradient(90deg, transparent, #B8926A, transparent); opacity:0.2;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photography direction -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Photography &amp; Imagery</div>
+      <div class="narrative">
+        <p>All imagery follows a strict editorial direction: <strong>warm natural light</strong>, muted colour grading that sits within the bronze-navy palette, and compositions that feel candid rather than posed. No stock-photo handshakes. No forced smiles. No clinical lighting. Every image should feel like it was shot for a feature in a private banking journal — atmospheric, unhurried, and quietly confident.</p>
+        <p>Hero images use full-bleed treatment with a layered gradient overlay (navy to near-black) that anchors text without obscuring atmosphere. Section breaks use landscape crops at 280&ndash;360px height. Inline images sit within the content column with subtle 4px rounding.</p>
+      </div>
+
+      <!-- Tone -->
+      <div class="bronze-divider"></div>
+      <div class="section-label" style="margin-top:40px;">Voice &amp; Tone</div>
+      <div class="narrative">
+        <p>Five words govern every line of copy: <strong>confident, discreet, precise, warm, relationship-led.</strong></p>
+        <p>Sentences are short. Paragraphs breathe. We never oversell — the calibre of the advice does the convincing. Technical terms appear when they earn trust (CFP, CIM, FSWP), never as jargon. The voice speaks to one person across a desk, not an audience in a room.</p>
       </div>
     </section>
   </div>
